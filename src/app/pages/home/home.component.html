@@ -1,0 +1,71 @@
+<header id="header">
+    <div>
+        <p>Esta es una demo de un compilador para un lenguaje de dibujo que consta de tres instrucciones basicas</p>
+    </div>
+    <div>
+        <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Instrucciones
+        </button>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                <ol>
+                    <li>Paper: Define el color del papel (Valor máximo = 100)</li>
+                    <li>Pen: Define el color de la pluma (Valor máximo = 100)</li>
+                    <li>Line: Define la linea trazada y acepta 4 valores separados por espacios
+                        <ul>
+                            <li>Primero: Coordenada X donde inicia el trazo</li>
+                            <li>Segundo: Coordenada Y donde inicia el trazo</li>
+                            <li>Tercero: Coordenada X donde termina el trazo</li>
+                            <li>Cuarto: Coordenada Y donde termina el trazo</li>
+                        </ul>
+                        Tomando en cuenta que se numera a partir de la esquina izquierda inferior
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div>
+
+    </div>
+</header>
+<!-- /header -->
+<div id="editor">
+    <div id="svg-container"></div>
+    <div id="code">
+    </div>
+    <div>
+        <svg width="50" height="420" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="gradient"  x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%"  stop-color="black"/>
+            <stop offset="100%" stop-color="white"/>
+          </linearGradient>
+        </defs>
+        <rect fill="url(#gradient)" x="0" y="0" width="50" height="420"/>
+        <text x="4" y="15" font-family="Verdana" font-size="12" style="fill:#fff">100</text>
+        <text x="11" y="410" font-family="Verdana" font-size="12">0</text>
+      </svg>
+    </div>
+</div>
+<div id="process">
+    <div>
+        <h2>Tokens</h2>
+        <div id="tokens-msg" class="message success">test</div>
+        <div id="tokens"></div>
+    </div>
+    <div>
+        <h2>Parsed AST</h2>
+        <div id="sbnast-msg" class="message"></div>
+        <div id="sbnast"></div>
+    </div>
+    <div>
+        <h2>Transformed AST</h2>
+        <div id="svgast-msg" class="message"></div>
+        <div id="svgast"></div>
+    </div>
+    <div>
+        <h2>Generated Code</h2>
+        <div id="svgtext-msg" class="message"></div>
+        <div id="svgtext"></div>
+    </div>
+</div>
