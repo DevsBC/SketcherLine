@@ -21,11 +21,21 @@ export class SlService {
     this.SL.transformer = transformer;
     this.SL.generator = generator;
     this.SL.compile = (code) => {
-      return this.SL.generator(this.SL.transformer(this.SL.parser(this.SL.lexer(code))));
+      const result: any = {};
+      result.lexer = this.SL.lexer(this.getCopy(code));
+      result.parser = this.SL.parser(this.getCopy(result.lexer));
+      result.transformer = this.SL.transformer(this.getCopy(result.parser));
+      result.generator = this.SL.generator(this.getCopy(result.transformer));
+      console.log(result);
+      return result;
     };
   }
 
   public compile(code: string) {
     return this.SL.compile(code);
+  }
+
+  private getCopy(object) {
+    return JSON.parse(JSON.stringify(object));
   }
 }

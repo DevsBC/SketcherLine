@@ -1,4 +1,4 @@
-<header id="header">
+<header id="header" style="padding-left: 20px;">
     <button class="btn btn-danger" (click)="compile()">COMPILAR</button>
 
     <div>
@@ -30,44 +30,38 @@
 
     </div>
 </header>
-<!-- /header -->
-<div id="editor">
-    <div id="svg-container"></div>
-    <div id="code">
+
+<div class="row">
+    <div id="editor" style="width: -webkit-fill-available; height: 305px;">
+        <div class="col-md-8 col-sm-6">
+            <ngx-codemirror [(ngModel)]="code" [options]="optionsCode" [autoFocus]="true"></ngx-codemirror>
+        </div>
+        <div class="col-md-4 col-sm-6" *ngIf="result" [innerHTML]="result.generator | safe: 'html'">
+
+        </div>
     </div>
-    <div>
-        <svg width="50" height="420" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="gradient"  x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%"  stop-color="black"/>
-            <stop offset="100%" stop-color="white"/>
-          </linearGradient>
-        </defs>
-        <rect fill="url(#gradient)" x="0" y="0" width="50" height="420"/>
-        <text x="4" y="15" font-family="Verdana" font-size="12" style="fill:#fff">100</text>
-        <text x="11" y="410" font-family="Verdana" font-size="12">0</text>
-      </svg>
-    </div>
+
 </div>
-<div id="process">
+
+<div id="process" style="padding-left: 30px;">
     <div>
         <h2>Tokens</h2>
         <div id="tokens-msg" class="message success">test</div>
-        <div id="tokens"></div>
+        <ngx-codemirror [(ngModel)]="t" [options]="options"></ngx-codemirror>
     </div>
     <div>
         <h2>Parsed AST</h2>
-        <div id="sbnast-msg" class="message"></div>
-        <div id="sbnast"></div>
+        <div id="sbnast-msg" class="message error">Error</div>
+        <ngx-codemirror [(ngModel)]="result.parser" [options]="options"></ngx-codemirror>
     </div>
     <div>
         <h2>Transformed AST</h2>
         <div id="svgast-msg" class="message"></div>
-        <div id="svgast"></div>
+        <ngx-codemirror [(ngModel)]="result.transformer" [options]="options"></ngx-codemirror>
     </div>
     <div>
         <h2>Generated Code</h2>
         <div id="svgtext-msg" class="message"></div>
-        <div id="svgtext"></div>
+        <ngx-codemirror [(ngModel)]="result.generator" [options]="options"></ngx-codemirror>
     </div>
 </div>

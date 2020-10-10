@@ -117,7 +117,7 @@ export const parser = (tokens: TokenModel[]) => {
         throw new Error('Unexpected token type : ' + currentToken.type);
       }
     }
-
+    console.log(AST);
     return AST;
 };
 

@@ -14,12 +14,11 @@ export const lexer = (code: any) => {
       .split(/[\t\f\v ]+/);
     };
 
-    const tokensInput = replaceSpecialCharacters(code);
 
     const addToken = (type: string, value: any) => {
       const token = {} as TokenModel;
       token.type = type;
-      if (value) { token.value = value; }
+      if (value || value === 0) { token.value = value; }
       tokens.push(token);
     };
 
@@ -40,6 +39,9 @@ export const lexer = (code: any) => {
       return character.substring(1).slice(0, -1);
     };
 
+    const tokensInput = replaceSpecialCharacters(code);
+    console.log(JSON.stringify(tokensInput));
+
     for (const t of tokensInput) {
       if (t.length <= 0 || isNaN(t)) {
         if (isSpecialCharacter(t)) {
@@ -57,5 +59,6 @@ export const lexer = (code: any) => {
       throw new Error('No Tokens Found. Try "Paper 10"');
     }
 
+    console.log(JSON.stringify(tokens));
     return tokens;
 };
