@@ -1,0 +1,67 @@
+<header id="header" style="padding-left: 20px;">
+    <button class="btn btn-danger" (click)="compile()">COMPILAR</button>
+
+    <div>
+        <p>Esta es una demo de un compilador para un lenguaje de dibujo que consta de tres instrucciones basicas</p>
+    </div>
+    <div>
+        <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Instrucciones
+        </button>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                <ol>
+                    <li>Paper: Define el color del papel (Valor máximo = 100)</li>
+                    <li>Pen: Define el color de la pluma (Valor máximo = 100)</li>
+                    <li>Line: Define la linea trazada y acepta 4 valores separados por espacios
+                        <ul>
+                            <li>Primero: Coordenada X donde inicia el trazo</li>
+                            <li>Segundo: Coordenada Y donde inicia el trazo</li>
+                            <li>Tercero: Coordenada X donde termina el trazo</li>
+                            <li>Cuarto: Coordenada Y donde termina el trazo</li>
+                        </ul>
+                        Tomando en cuenta que se numera a partir de la esquina izquierda inferior
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div>
+
+    </div>
+</header>
+
+<div class="row">
+    <div id="editor" style="width: -webkit-fill-available; height: 305px;">
+        <div class="col-md-8 col-lg-8 col-sm-6">
+            <ngx-codemirror [(ngModel)]="code" [options]="optionsCode" [autoFocus]="true"></ngx-codemirror>
+        </div>
+        <div class="col-md-4 col-lg-4 col-sm-6" *ngIf="result" [innerHTML]="result.generator | safe: 'html'">
+
+        </div>
+    </div>
+
+</div>
+
+<div id="process" style="padding-left: 30px;">
+    <div>
+        <h2>Tabla de Tokens</h2>
+        <div id="tokens-msg" [class]="getClass('lexer')">Resultado</div>
+        <ngx-codemirror [(ngModel)]="lexer" [options]="options" [autoFocus]="true"></ngx-codemirror>
+    </div>
+    <div>
+        <h2>Analisis Sintactico</h2>
+        <div id="sbnast-msg" [class]="getClass('parser')">Resultado</div>
+        <ngx-codemirror [(ngModel)]="parser" [options]="options" [autoFocus]="true"></ngx-codemirror>
+    </div>
+    <div>
+        <h2>Codigo Intermedio</h2>
+        <div id="svgast-msg" [class]="getClass('transformer')">Resultado</div>
+        <ngx-codemirror [(ngModel)]="transformer" [options]="options" [autoFocus]="true"></ngx-codemirror>
+    </div>
+    <div>
+        <h2>Codigo Objeto</h2>
+        <div id="svgtext-msg" [class]="getClass('generator')">Resultado</div>
+        <ngx-codemirror [(ngModel)]="generator" [options]="options" [autoFocus]="true"></ngx-codemirror>
+    </div>
+</div>

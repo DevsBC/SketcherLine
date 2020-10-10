@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "sketcher-line"
+  },
+  "targets": {
+    "sketcher-line": {
+      "hosting": {
+        "sketcher-line": [
+          "sketcher-line"
+        ]
+      }
+    }
+  }
+}
