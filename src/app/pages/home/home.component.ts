@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SlService } from '../../services/sl.service';
-import * as mirror from 'codemirror';
-import { transformer } from '../../functions/transformer';
-import { generator } from '../../functions/generator';
 import { SLModel } from '../../models/sl.model';
 
 @Component({
@@ -24,6 +21,7 @@ export class HomeComponent implements OnInit {
   transformer: any;
   generator: any;
   sl: SLModel;
+  arguments: any;
   optionsCode: any = {
     lineNumbers: true,
     value: '',
@@ -34,7 +32,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.SL.setSLObject();
     this.sl = this.SL.getSL();
-    this.code = '// Comentario \n Paper 50 \n Pen 50 \n Line 0 50 100 50';
+    this.code = '// Comentario \n Paper 50 \n Pen 100 \n Line 0 50 100 50';
     this.compile();
   }
 
@@ -45,6 +43,7 @@ export class HomeComponent implements OnInit {
     this.transformer = (!this.errors(this.result.transformer)) ? JSON.stringify(this.result.transformer, null, 2) :
                       this.result.transformer.message;
     this.generator = this.result.generator;
+    this.arguments = JSON.parse(this.parser).body.find( b => b.name === 'Line').arguments;
     console.log(this.result);
   }
 

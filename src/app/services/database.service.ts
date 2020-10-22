@@ -12,7 +12,8 @@ export class DatabaseService {
     const date = Date.now();
     const comment = {
       id: String(date),
-      comment: comments
+      comment: comments,
+      date: new Date().toDateString()
     };
     this.firestore.collection('comments').doc(comment.id).set(comment);
   }

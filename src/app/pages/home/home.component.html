@@ -4,7 +4,7 @@
     <div>
         <p>Esta es una demo de un compilador para un lenguaje de dibujo que consta de tres instrucciones basicas</p>
     </div>
-    <div>
+    <div class="btn-group">
         <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
           Instrucciones
         </button>
@@ -25,6 +25,67 @@
                 </ol>
             </div>
         </div>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#triplos" aria-expanded="false" aria-controls="collapseExample">
+            Triplos
+          </button>
+          <div class="collapse" id="triplos">
+            <table class="table table-hover text-center">
+                <thead>
+                  <tr>
+                    <th scope="col">Operador</th>
+                    <th scope="col">Operando 1</th>
+                    <th scope="col">Operando 2</th>
+                  </tr>
+                </thead>
+                <tbody *ngIf="arguments">
+                  <tr>
+                    <th scope="row"> + </th>
+                    <td>COORD_X_INIT: {{ arguments[0].value }} </td>
+                    <td>COORD_Y_INIT: {{ arguments[1].value }} </td>
+                  </tr>
+                  <tr>
+                    <th scope="row"> + </th>
+                    <td>COORD_X_END: {{ arguments[2].value }} </td>
+                    <td>COORD_Y_END: {{ arguments[3].value }} </td>
+                  </tr>
+                </tbody>
+            </table>
+          </div>
+          <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#cuadruplos" aria-expanded="false" aria-controls="collapseExample">
+            Cuadruplos
+          </button>
+          <div class="collapse" id="cuadruplos">
+            <table class="table table-hover text-center">
+                <thead>
+                  <tr>
+                    <th scope="col">Operador</th>
+                    <th scope="col">Operando 1</th>
+                    <th scope="col">Operando 2</th>
+                    <th scope="col">Temporal</th>
+                  </tr>
+                </thead>
+                <tbody *ngIf="arguments">
+                  <tr>
+                    <th scope="row"> + </th>
+                    <td>COORD_X_INIT: {{ arguments[0].value }} </td>
+                    <td>COORD_Y_INIT: {{ arguments[1].value }} </td>
+                    <td>T1</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"> + </th>
+                    <td>COORD_X_END: {{ arguments[2].value }} </td>
+                    <td>COORD_Y_END: {{ arguments[3].value }} </td>
+                    <td>T2</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"> + </th>
+                    <td>T1</td>
+                    <td>T2</td>
+                    <td>T3</td>
+                  </tr>
+                </tbody>
+            </table>
+          </div>
     </div>
     <div>
 

@@ -17,7 +17,7 @@ export class AppComponent {
           icon: 'success',
           title: 'Mensaje enviado',
           text: 'Gracias por tus comentarios!',
-          footer: '<a href>He sido un mal estudiante?</a>'
+          footer: '<a href="http://www.fb.com/profile.php?">He sido un mal estudiante?</a>'
         }).then( () => {
           window.location.reload();
         });
